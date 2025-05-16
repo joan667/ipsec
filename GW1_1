@@ -1,0 +1,5 @@
+ip tunnel add sit2 mode sit remote 10.0.3.2 local 10.0.0.1 ttl 255
+ip link set sit2 up 
+ip addr add 2001:db8:1234::2/64 dev sit2 ip -6 route add ::/0 via 2001:db8:1234::3 dev sit2
+#Eliminem la ruta per defecte anterior ja que no te gaire sentit i si es deixa no funciona 
+ip -6 route del ::/0 via 2001::1 dev etho
